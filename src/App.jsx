@@ -1,5 +1,5 @@
 import { Suspense , useEffect, useRef , useState } from 'react'
-import { Html , useHelper , OrbitControls , Environment , Float, useTexture , PositionalAudio  } from '@react-three/drei'
+import {  OrbitControls , Environment , Float, useTexture   } from '@react-three/drei'
 import {Model as Spaceship} from '/Components/Spaceship4.jsx'
 import {useControls} from 'leva'
 import * as THREE from 'three' 
@@ -27,14 +27,16 @@ export default function App() {
 
   const lightRef = useRef()
 
+  const envRotationY=4.62
+  const envRotationX=0.2
   // useHelper(lightRef , THREE.DirectionalLightHelper,1 ,'hotpink')
 
-  const {lightIntensity , lightPos,envRotationY , envRotationX} = useControls({
-    // lightIntensity:{value:2 , min:0 , max:4},
-    // lightPos:[-4.3,0.5,3.5],
-    envRotationY:{value:4.62 , min:0 , max:Math.PI * 2 , step:0.01 },
-    envRotationX:{value:0.2 , min:0 , max:Math.PI * 2 , step:0.01 },
-  })
+  // const {lightIntensity , lightPos,envRotationY , envRotationX} = useControls({
+  //   // lightIntensity:{value:2 , min:0 , max:4},
+  //   // lightPos:[-4.3,0.5,3.5],
+  //   envRotationY:{value:4.62 , min:0 , max:Math.PI * 2 , step:0.01 },
+  //   envRotationX:{value:0.2 , min:0 , max:Math.PI * 2 , step:0.01 },
+  // })
 
   const planetTexture=useTexture('/Baked Textures/Earth/planet-earth-orbit-outer-space-cosmos-1920x1200-8769.jpg')
 
@@ -88,12 +90,7 @@ export default function App() {
 
       <Float speed={0.5} rotationIntensity={0.2} floatIntensity={0.5} >
       <Spaceship />
-      {/* <PositionalAudio 
-        url='/Audio/Dark was the night, cold was the ground (2022 Remastered Version).mp3' 
-        // distance={10}
-        loop
-        autoplay
-      /> */}
+
         
       </Float>
     </>
